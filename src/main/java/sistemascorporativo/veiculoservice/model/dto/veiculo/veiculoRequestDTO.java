@@ -1,6 +1,7 @@
 package sistemascorporativo.veiculoservice.model.dto.veiculo;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -23,10 +23,10 @@ public class veiculoController {
     private final veiculoService veiculoService;
 
     @PostMapping()
-    public ResponseEntity<veiculoResponseDTO> salvarImovel(@RequestBody @Valid veiculoRequestDTO request) {
-        veiculoResponseDTO imovelResponse = veiculoService.saveVeiculo(request);
-        URI location = URI.create(String.format("/imovel/%s", imovelResponse.getId()));
-        return ResponseEntity.created(location).body(imovelResponse);
+    public ResponseEntity<veiculoResponseDTO> salvarVeiculo(@RequestBody @Valid veiculoRequestDTO request) {
+        veiculoResponseDTO veiculoResponse = veiculoService.saveVeiculo(request);
+        URI location = URI.create(String.format("/veiculo/%s", veiculoResponse.getId()));
+        return ResponseEntity.created(location).body(veiculoResponse);
     }
 
     @GetMapping()
