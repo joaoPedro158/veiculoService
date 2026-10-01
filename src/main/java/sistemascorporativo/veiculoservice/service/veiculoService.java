@@ -8,6 +8,8 @@ import sistemascorporativo.veiculoservice.model.mapper.veiculoMapper;
 import sistemascorporativo.veiculoservice.model.veiculo;
 import sistemascorporativo.veiculoservice.repository.veiculoRepository;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class veiculoService {
@@ -18,5 +20,12 @@ public class veiculoService {
         veiculo veiculoModel = veiculoMapper.toModel(request);
         veiculo veiculoSalvo = veiculoRepository.save(veiculoModel);
         return veiculoMapper.toResponse(veiculoSalvo);
+    }
+
+    public List<veiculoResponseDTO> listarVeiculo() {
+        List<veiculo> veiculos = veiculoRepository.findAll();
+
+
+        return veiculoMapper.toListResponse(veiculos);
     }
 }
