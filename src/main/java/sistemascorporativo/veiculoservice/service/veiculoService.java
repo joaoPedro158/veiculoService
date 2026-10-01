@@ -39,4 +39,13 @@ public class veiculoService {
 
         veiculoRepository.deleteById(id);
     }
+
+    public veiculoResponseDTO atualizarVeiculo(veiculoRequestDTO request, Long id) {
+        veiculo veiculoModel = veiculoMapper.toModel(request);
+        veiculo veiculoSalvo = veiculoRepository.findById(id).orElse(null);
+        veiculoSalvo.setId(veiculoModel.getId());
+        veiculo veiculoAtualizado = veiculoRepository.save(veiculoModel);
+
+        return veiculoMapper.toResponse(veiculoAtualizado);
+    }
 }

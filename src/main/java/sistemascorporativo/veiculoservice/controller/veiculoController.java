@@ -45,4 +45,11 @@ public class veiculoController {
         veiculoService.deletarVeiculoPorId(id);
         return  ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<veiculoResponseDTO> listarVeiculos(@RequestBody veiculoRequestDTO request, @PathVariable Long id) {
+        veiculoResponseDTO veiculos = veiculoService.atualizarVeiculo(request, id);
+        return ResponseEntity.ok(veiculos);
+    }
+
 }
