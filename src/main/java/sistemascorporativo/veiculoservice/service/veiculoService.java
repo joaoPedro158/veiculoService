@@ -2,6 +2,7 @@ package sistemascorporativo.veiculoservice.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import sistemascorporativo.veiculoservice.exception.veiculoNaoEncontradoException;
 import sistemascorporativo.veiculoservice.model.dto.veiculo.veiculoRequestDTO;
 import sistemascorporativo.veiculoservice.model.dto.veiculo.veiculoResponseDTO;
 import sistemascorporativo.veiculoservice.model.mapper.veiculoMapper;
@@ -31,7 +32,9 @@ public class veiculoService {
 
 
     public veiculoResponseDTO buscarVeiculoPorId(Long id) {
-        veiculo veiculo = veiculoRepository.findById(id).orElse(null);
+        veiculo veiculo = veiculoRepository.findById(id).orElseThrow(
+                () -> new veiculoNaoEncontradoException(id)
+        );
         return veiculoMapper.toResponse(veiculo);
     }
 
@@ -42,7 +45,9 @@ public class veiculoService {
 
     public veiculoResponseDTO atualizarVeiculo(veiculoRequestDTO request, Long id) {
         veiculo veiculoModel = veiculoMapper.toModel(request);
-        veiculo veiculoSalvo = veiculoRepository.findById(id).orElse(null);
+        veiculo veiculoSalvo = veiculoRepository.findById(id).orElseThrow(
+                () -> new veiculoNaoEncontradoException(id)
+        );
         veiculoModel.setId(veiculoSalvo.getId());
         veiculo veiculoAtualizado = veiculoRepository.save(veiculoModel);
 

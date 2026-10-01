@@ -29,4 +29,13 @@ public class GlobalExceptionHandle {
         pd.setProperty("erros", extrairErros(ex));
         return pd;
     }
+
+    @ExceptionHandler(veiculoNaoEncontradoException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ProblemDetail handleValidation(veiculoNaoEncontradoException ex) {
+        var pd =ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+        pd.setTitle("veiculo nao encontrado");
+        pd.setDetail(ex.getMessage());
+        return pd;
+    }
 }
