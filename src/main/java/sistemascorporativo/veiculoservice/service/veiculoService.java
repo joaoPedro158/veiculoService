@@ -34,4 +34,9 @@ public class veiculoService {
         veiculo veiculo = veiculoRepository.findById(id).orElse(null);
         return veiculoMapper.toResponse(veiculo);
     }
+
+    public void deletarVeiculoPorId(Long id) {
+
+        veiculoRepository.deleteById(id);
+    }
 }

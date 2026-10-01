@@ -1,6 +1,7 @@
 package sistemascorporativo.veiculoservice.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sistemascorporativo.veiculoservice.model.dto.veiculo.veiculoRequestDTO;
@@ -37,5 +38,11 @@ public class veiculoController {
     public ResponseEntity<veiculoResponseDTO> getVeiculo(@PathVariable Long id) {
         veiculoResponseDTO veiculo = veiculoService.buscarVeiculoPorId(id);
         return  ResponseEntity.ok(veiculo);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletarVeiculo(@PathVariable Long id) {
+        veiculoService.deletarVeiculoPorId(id);
+        return  ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

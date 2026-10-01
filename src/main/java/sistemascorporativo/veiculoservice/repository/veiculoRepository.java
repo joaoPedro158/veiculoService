@@ -9,4 +9,6 @@ public interface veiculoRepository extends JpaRepository<veiculo, Long> {
     public veiculo save(veiculo veiculo);
 
     public Optional<veiculo> findById(Long id);
+
+    public void deleteById(Long id);
 }
