@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class veiculoResponseDTO {
 
     private Long id;
-    private String plava;
+    private String placa;
     private String modelo;
     private Integer anoFabricacao;
     private String nomeProprietario;

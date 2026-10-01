@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class veiculoRequestDTO {
 
-    private String plava;
+    private String placa;
     private String modelo;
     private Integer anoFabricacao;
     private String nomeProprietario;
