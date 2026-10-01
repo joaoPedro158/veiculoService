@@ -1,5 +1,6 @@
 package sistemascorporativo.veiculoservice.controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class veiculoController {
     private final veiculoService veiculoService;
 
     @PostMapping()
-    public ResponseEntity<veiculoResponseDTO> salvarImovel(@RequestBody  veiculoRequestDTO request) {
+    public ResponseEntity<veiculoResponseDTO> salvarImovel(@RequestBody @Valid veiculoRequestDTO request) {
         veiculoResponseDTO imovelResponse = veiculoService.saveVeiculo(request);
         URI location = URI.create(String.format("/imovel/%s", imovelResponse.getId()));
         return ResponseEntity.created(location).body(imovelResponse);
@@ -55,7 +56,7 @@ public class veiculoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<veiculoResponseDTO> listarVeiculos(@RequestBody veiculoRequestDTO request, @PathVariable Long id) {
+    public ResponseEntity<veiculoResponseDTO> listarVeiculos(@RequestBody @Valid veiculoRequestDTO request, @PathVariable Long id) {
         veiculoResponseDTO veiculos = veiculoService.atualizarVeiculo(request, id);
         return ResponseEntity.ok(veiculos);
     }
