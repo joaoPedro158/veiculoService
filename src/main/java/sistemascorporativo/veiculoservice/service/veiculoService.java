@@ -48,4 +48,9 @@ public class veiculoService {
 
         return veiculoMapper.toResponse(veiculoAtualizado);
     }
+
+    public List<veiculoResponseDTO> listarVeiculosFiltro(String tipo) {
+        List<veiculo> veiculos = veiculoRepository.findBytipoContainingIgnoreCase(tipo);
+        return veiculoMapper.toListResponse(veiculos);
+    }
 }
