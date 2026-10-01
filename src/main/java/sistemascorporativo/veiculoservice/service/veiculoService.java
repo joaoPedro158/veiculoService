@@ -28,4 +28,10 @@ public class veiculoService {
 
         return veiculoMapper.toListResponse(veiculos);
     }
+
+
+    public veiculoResponseDTO buscarVeiculoPorId(Long id) {
+        veiculo veiculo = veiculoRepository.findById(id).orElse(null);
+        return veiculoMapper.toResponse(veiculo);
+    }
 }
