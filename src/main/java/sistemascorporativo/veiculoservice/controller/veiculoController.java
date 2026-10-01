@@ -34,7 +34,7 @@ public class veiculoController {
         return ResponseEntity.ok(veiculos);
     }
 
-    @GetMapping()
+    @GetMapping("/tipo")
     public ResponseEntity<List<veiculoResponseDTO>> listarVeiculosFiltro(@RequestParam String tipo) {
         List<veiculoResponseDTO> veiculos = veiculoService.listarVeiculosFiltro(tipo);
         return ResponseEntity.ok(veiculos);
