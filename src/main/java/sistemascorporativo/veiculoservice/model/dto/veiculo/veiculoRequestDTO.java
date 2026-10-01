@@ -12,5 +12,6 @@ public class veiculoRequestDTO {
     private String placa;
     private String modelo;
     private Integer anoFabricacao;
+    private String tipo;
     private String nomeProprietario;
 }
