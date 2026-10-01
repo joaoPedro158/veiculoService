@@ -2,6 +2,7 @@ package sistemascorporativo.veiculoservice.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import sistemascorporativo.veiculoservice.exception.placaDuplicadaException;
 import sistemascorporativo.veiculoservice.exception.veiculoNaoEncontradoException;
 import sistemascorporativo.veiculoservice.model.dto.veiculo.veiculoRequestDTO;
 import sistemascorporativo.veiculoservice.model.dto.veiculo.veiculoResponseDTO;
@@ -19,6 +20,9 @@ public class veiculoService {
 
     public veiculoResponseDTO saveVeiculo(veiculoRequestDTO request) {
         veiculo veiculoModel = veiculoMapper.toModel(request);
+        if(veiculoRepository.existsByPlaca(veiculoModel.getPlaca())){
+            throw  new placaDuplicadaException(veiculoModel.getPlaca());
+        }
         veiculo veiculoSalvo = veiculoRepository.save(veiculoModel);
         return veiculoMapper.toResponse(veiculoSalvo);
     }

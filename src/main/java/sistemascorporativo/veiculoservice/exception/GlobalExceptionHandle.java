@@ -38,4 +38,6 @@ public class GlobalExceptionHandle {
         pd.setDetail(ex.getMessage());
         return pd;
     }
+
+
 }

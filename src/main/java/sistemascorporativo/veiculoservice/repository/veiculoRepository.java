@@ -14,4 +14,6 @@ public interface veiculoRepository extends JpaRepository<veiculo, Long> {
     public void deleteById(Long id);
 
     public List<veiculo> findBytipoContainingIgnoreCase(String tipo);
+
+    public boolean existsByPlaca(String placa);
 }
